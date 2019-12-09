@@ -25,8 +25,20 @@ app.listen(3000, () => {
 app.get('/', (req: any, res: any) => {
     res.render('login')
   })
-authRouter.get('/login', (req: any, res: any) => {
+app.get('/login', (req: any, res: any) => {
     res.render('login')
   })
+// authRouter.get('/login', (req: any, res: any) => {
+//     res.render('login')
+//   })
   
+//registration
+app.get('/registration', (req: any, res: any) => {
+    res.render('registration')
+  })
+
+//signup
+app.get('/signup', (req: any, res: any) => {
+    res.render('registration')
+  })
 module.exports = app;
