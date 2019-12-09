@@ -2,6 +2,7 @@ import express = require('express')
 import path = require('path')
 import bodyparser = require('body-parser')
 import session = require('express-session')
+import { LevelDB } from "./leveldb"
 
 
 const app = express()
@@ -23,7 +24,7 @@ app.listen(port, (err: Error) => {
     console.log(`Server is running on http://localhost:${port}`)
   })
 
-//home
+//home page
 app.get('/', (req: any, res: any) => {
     res.render('home')
 })
@@ -31,28 +32,29 @@ app.get('/home', (req: any, res: any) => {
     res.render('home')
 })
 
-//login 
+//login page
 app.get('/login', (req: any, res: any) => {
     res.render('login')
 })
-// authRouter.get('/login', (req: any, res: any) => {
-//     res.render('login')
-//   })
+app.post('/login', (req: any, res: any) => {
+    console.log(req.body.userName)
+})
 
-//registration
+//registration page
 app.get('/registration', (req: any, res: any) => {
     res.render('registration')
 })
 
-//signup
+//signup page
 app.get('/signup', (req: any, res: any) => {
     res.render('registration')
 })
 
-//myMetrics
+//myMetrics page
 app.get('/myMetrics', (req: any, res: any) => {
     res.render('myMetrics')
 })
+
 
 
 module.exports = app;

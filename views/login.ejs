@@ -18,13 +18,16 @@
 	</ul>
 
 	<form action="/myMetrics" style="margin-left:40% ; margin-right:40%; margin-top:10%">
+		<h1>
+			LOGIN FORM
+		</h1>
 		<div class="form-group">
 			<label for="userN">User name</label>
-			<input type="text" class="form-control" id="userN" name="user">
+			<input type="text" class="form-control" id="userN" name="userName" required>
 		</div>
 		<div class="form-group">
 			<label for="Password">Password</label>
-			<input type="password" class="form-control" id="Password" name="pass">
+			<input type="password" class="form-control" id="Password" name="pass" required>
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button> <a href="/registration">Registration</a>
 	</form>

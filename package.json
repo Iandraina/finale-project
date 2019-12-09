@@ -23,9 +23,15 @@
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
+    "del": "^5.1.0",
     "ejs": "^3.0.1",
+    "encoding-down": "^6.3.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "level": "^6.0.0",
+    "level-ws": "^2.0.0",
+    "leveldown": "^5.4.1",
+    "levelup": "^4.3.2",
     "mysql": "^2.17.1",
     "node_modules-path": "^2.0.4",
     "nodemon": "^2.0.1",
@@ -33,6 +39,7 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "@types/levelup": "^4.3.0",
     "@types/node": "^12.12.14",
     "typescript": "^3.7.3"
   }
