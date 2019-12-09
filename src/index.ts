@@ -2,8 +2,7 @@ import express = require('express')
 import path = require('path')
 import bodyparser = require('body-parser')
 import session = require('express-session')
-import { LevelDB } from "./leveldb"
-
+import alert = require('alert-node') 
 
 const app = express()
 /*const authRouter = express.Router()*/
@@ -12,7 +11,8 @@ const port: string = process.env.PORT || '3000'
 //for body parser
 app.use(express.static(path.join(__dirname, '/../public')))
 app.use(bodyparser.json())
-app.use(bodyparser.urlencoded())
+app.use(bodyparser.urlencoded({extended : false}))
+
 
 //template engine
 app.set('views', __dirname + "/../views")
@@ -37,7 +37,12 @@ app.get('/login', (req: any, res: any) => {
     res.render('login')
 })
 app.post('/login', (req: any, res: any) => {
-    console.log(req.body.userName)
+    if(req.body.userName === "iandraina" && req.body.pass === "iandrainarave0507"){
+        res.render('myMetrics')
+    }
+    else{
+        res.render('login')
+    }
 })
 
 //registration page
