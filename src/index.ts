@@ -3,6 +3,7 @@ import path = require('path')
 import bodyparser = require('body-parser')
 import session = require('express-session')
 import alert = require('alert-node') 
+import { MetricsHandler } from './metrics'
 
 const app = express()
 /*const authRouter = express.Router()*/
@@ -41,6 +42,7 @@ app.post('/login', (req: any, res: any) => {
         res.render('myMetrics')
     }
     else{
+        console.log("the username or password is not correct")
         res.render('login')
     }
 })
@@ -54,12 +56,27 @@ app.get('/registration', (req: any, res: any) => {
 app.get('/signup', (req: any, res: any) => {
     res.render('registration')
 })
+app.post('/signup', (req: any, res: any) => {
+    if(req.body.userName != "iandraina" ){
+        res.render('myMetrics')
+    }
+    else{
+        console.log("The username you enter is already used!")
+        res.render('registration')
+    }
+})
 
 //myMetrics page
 app.get('/myMetrics', (req: any, res: any) => {
     res.render('myMetrics')
 })
-
-
+app.get('/login', (req: any, res: any) => {
+    MetricsHandler.get((err: Error | null, result?: any) => {
+      if (err) {
+        throw err
+      }
+      res.json(result)
+    })
+  })
 
 module.exports = app;
