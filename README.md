@@ -32,8 +32,8 @@ npm test
 ```
 or
 ```
-npm CI ```
-
+npm CI 
+```
 
 ## COLLABORATOR 
 RAVELOMANANA Iandraina
