@@ -74,7 +74,7 @@ app.post('/login', (req: any, res: any) => {
         }
 
         if(!user){
-            console.log("diso user")
+            console.log("identifiant non existant")
             res.render('login')
             return res.status(404).send()
         }
