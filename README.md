@@ -18,7 +18,7 @@ npm run build
 
 ### Development 
 
-To make the projet run you can just type in your terminal : 
+To make the projet run you have to type in your terminal : 
 
 ```
 npm start
@@ -30,10 +30,8 @@ To run the test module, you just need to type in your terminal :
 ```
 npm test 
 ```
-or
-```
-npm CI 
-```
 
 ## COLLABORATOR 
-RAVELOMANANA Iandraina
+- CLAVERIE Mathieu
+- LOBA Alexandre
+- RAVELOMANANA Iandraina
