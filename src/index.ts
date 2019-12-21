@@ -5,6 +5,7 @@ import session = require('express-session')
 import alert = require('alert-node')
 import Router = require('router')
 import User = require ('../lib/user')
+import { MetricsHandler } from './metrics'
 
 const router = Router()
 const app = express()
@@ -115,7 +116,14 @@ app.post('/signup', (req: any, res: any) => {
 app.get('/myMetrics', (req: any, res: any) => {
     res.render('myMetrics')
 })
-
+app.get('/metrics.json', (req: any, res: any) => {
+    MetricsHandler.get((err: Error | null, result?: any) => {
+      if (err) {
+        throw err
+      }
+      res.json(result)
+    })
+  })
 
 //logout
 router.get('/logout', function(req, res, next) {

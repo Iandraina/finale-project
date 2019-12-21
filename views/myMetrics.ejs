@@ -3,19 +3,27 @@
 
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="io-=edge">
 	<title>Metrics</title>
 </head>
+<style>
+	body { padding-top:80px; background-color: darkgoldenrod;}
+	body, h1, h2, h3, h4, h5, h6 {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+</style>
 
 <body>
 	<p style="margin-left:40% ; margin-right:30%; margin-top:20px">
 		welcome to your metrics profiles.
 	</p>
 
-	<ul class="nav justify-content-center" style="margin-left:80% ; margin-right:30%; margin-top:1%	">
+	<ul class="nav justify-content-center" style="margin-left:80% ; margin-right:10%; margin-top:1%	">
 		<li class="nav-item">
 			<a class="btn btn-primary btn-lg active" role="button" href="home">Logout</a>
 		</li>
@@ -27,16 +35,16 @@
 		<div id="metrics"></div>
 	</div>
 	<script>
-			// CODE ENCORE A MODIFIER POUR LES METRICS S'AJOUTE
-			// $('#show-metrics').click((e) => {
-			// 	e.preventDefault();
-			// 	$.getJSON("/metrics.json", {}, (data) => {
-			// 		const content = data.map(d => {
-			// 			return 'timestamp: ' + d.timestamp + ', value: ' + d.value + '';
-			// 		})
-			// 		$('#metrics').append(content.join("\n"));
-			// 	});
-			// })
+		//CODE ENCORE A MODIFIER POUR LES METRICS S'AJOUTE
+		$('#show-metrics').click((e) => {
+			e.preventDefault();
+			$.getJSON("/metrics.json", {}, (data) => {
+				const content = data.map(d => {
+					return 'timestamp: ' + d.timestamp + ', value: ' + d.value + '';
+				})
+				$('#metrics').append(content.join("\n"));
+			});
+		})
 	</script>
 
 	<div class="col-md-6 col-md-offset-3" style="margin-left:40% ; margin-right:30%; margin-top:20px">
