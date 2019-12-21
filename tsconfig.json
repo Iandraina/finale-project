@@ -10,7 +10,7 @@
     "noImplicitAny": false
   },
   "include": [
-    "src/**/*"
+    "src/**/*", "lib/user.ts"
   ],
   "exclude": [
       "node_modules",
