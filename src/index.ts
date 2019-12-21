@@ -4,7 +4,7 @@ import bodyparser = require('body-parser')
 import session = require('express-session')
 import alert = require('alert-node')
 import Router = require('router')
-import User = require ('../lib/user')
+import User = require('../lib/user')
 import { MetricsHandler } from './metrics'
 
 const router = Router()
@@ -17,7 +17,7 @@ app.use(session({
     secret: 'work hard',
     resave: true,
     saveUninitialized: false
-  }));
+}));
 
 //connection to DB 
 const mongoose = require('mongoose');
@@ -67,13 +67,13 @@ app.post('/login', (req: any, res: any) => {
     var username = req.body.userName
     var password = req.body.pass
 
-    User.findOne({username: username, password: password}, function(err, user){
-        if(err){
+    User.findOne({ username: username, password: password }, function (err, user) {
+        if (err) {
             console.log(err)
             return res.status(500).send()
         }
 
-        if(!user){
+        if (!user) {
             console.log("identifiant non existant")
             res.render('login')
             return res.status(404).send()
@@ -89,7 +89,7 @@ app.get('/signup', (req: any, res: any) => {
     res.render('registration')
 })
 app.post('/signup', (req: any, res: any) => {
-    var firstName = req.body.fName 
+    var firstName = req.body.fName
     var lastname = req.body.lName
     var username = req.body.userName
     var password = req.body.pass
@@ -99,13 +99,13 @@ app.post('/signup', (req: any, res: any) => {
     newUser.lastname = lastname
     newUser.username = username
     newUser.password = password
-    
-    newUser.save(function(err, savedUser){
-        if(err){
+
+    newUser.save(function (err, savedUser) {
+        if (err) {
             console.log(err)
             return res.status(500).send();
         }
-        else{
+        else {
             res.render('myMetrics')
             return res.status(200).send();
         }
@@ -118,25 +118,25 @@ app.get('/myMetrics', (req: any, res: any) => {
 })
 app.get('/metrics.json', (req: any, res: any) => {
     MetricsHandler.get((err: Error | null, result?: any) => {
-      if (err) {
-        throw err
-      }
-      res.json(result)
+        if (err) {
+            throw err
+        }
+        res.json(result)
     })
-  })
+})
 
 //logout
-router.get('/logout', function(req, res, next) {
+router.get('/logout', function (req, res, next) {
     if (req.session) {
-      // delete session object
-      req.session.destroy(function(err) {
-        if(err) {
-          return next(err);
-        } else {
-          return res.redirect('/home');
-        }
-      });
+        // delete session object
+        req.session.destroy(function (err) {
+            if (err) {
+                return next(err);
+            } else {
+                return res.redirect('/home');
+            }
+        });
     }
-  }),
+}),
 
-module.exports = app;
+    module.exports = app;
