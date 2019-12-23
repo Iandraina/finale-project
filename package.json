@@ -22,6 +22,7 @@
   "dependencies": {
     "alert-node": "^2.0.3",
     "body-parser": "^1.19.0",
+    "chart.js": "^2.9.3",
     "cookie-parser": "^1.4.4",
     "del": "^5.1.0",
     "ejs": "^3.0.1",
