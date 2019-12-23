@@ -25,7 +25,20 @@ mongoose.connect('mongodb://localhost:27017/gfg');
 var db = mongoose.connection;
 db.on('error', console.log.bind(console, "connection error"));
 db.once('open', function (callback) {
-    console.log("connection succeeded");
+    console.log("Connection succeeded");
+    //populate the database with 3 users when starting the app
+    var newUsers = [{ firstName: 'Mathieu', lastname: 'Claverie', username: 'Mat', password: '123'},
+                    { firstName: 'Alexandre', lastname: 'Loba', username: 'Alex', password: '456'},
+                    { firstName: 'Iandraina', lastname: 'Ravelomanana', username: 'Ian', password: '789'} ];
+
+    User.collection.insert(newUsers, function (err, savedUser) {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            console.log('Database populated')
+        }
+    })
 })
 
 //for body parser
@@ -44,6 +57,8 @@ app.listen(port, (err: Error) => {
     console.log(`Server is running on http://localhost:${port}`)
 })
 
+
+
 //home page
 app.get('/', (req: any, res: any) => {
     res.render('home')
@@ -51,7 +66,6 @@ app.get('/', (req: any, res: any) => {
 app.get('/home', (req: any, res: any) => {
     res.render('home')
 })
-
 
 
 //registration page
@@ -138,5 +152,4 @@ router.get('/logout', function (req, res, next) {
         });
     }
 }),
-
-    module.exports = app;
+module.exports = app;
