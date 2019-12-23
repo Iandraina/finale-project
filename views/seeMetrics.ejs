@@ -29,11 +29,15 @@
 </style>
 
 <body>
-
+	<ul class="nav justify-content-center" style="margin-left:80% ; margin-right:10%; margin-top:1%	">
+		<li class="nav-item">
+			<a class="btn btn-primary btn-lg active" role="button" href="myMetrics">BACK</a>
+		</li>
+	</ul>
 	<canvas id="myChart" width="2700" height="2800"></canvas>
 	<script>
 		var ctx = document.getElementById('myChart');
-		ctx.height = 1200;
+		ctx.height = 1100;
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
