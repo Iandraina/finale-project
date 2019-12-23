@@ -30,45 +30,49 @@
 
 <body>
 
-	<canvas id="myChart" width="50" height="150"></canvas>
+	<canvas id="myChart" width="2700" height="2800"></canvas>
 	<script>
 		var ctx = document.getElementById('myChart');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: [ ,'1546387199', '1546387189' , '1551484799 ', '1562025599'  , '1556755199 ', '1549065599 ', '1559433599 ',  '1554163199 '],
-        datasets: [{
-            label: '# Metrics',
-            data: [ 2, 10, 3, 7, 9, 6, 1, 4, 5, 3, 7, 5, 4, 5, 6, 7, 8, 6, 8, 9, 10],
-            backgroundColor: [
-                'rgba(169,169,169, 0.2)',
-                'rgba(169,169,169, 0.2)',
-                'rgba(169,169,169, 0.2)',
-                'rgba(169,169,169, 0.2)',
-                'rgba(169,169,169, 0.2)',
-                'rgba(169,169,169, 0.2)'
-            ],
-            borderColor: [
-                'rgba(192,192,192, 1)',
-                'rgba(192,192,192, 1)',
-                'rgba(192,192,192, 1)',
-                'rgba(192,192,192, 1)',
-                'rgba(192,192,192, 1)',
-                'rgba(192,192,192, 1)'
-            ],
-            borderWidth: 5
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: false 
-                }
-            }]
-        }
-    }
-});
+		ctx.height = 1200;
+		var myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: [, '1546387199', '1546387189', '1551484799 ', '1562025599', '1556755199 ', '1549065599 ', '1559433599 ', '1554163199 '],
+				datasets: [{
+					label: '# Metrics',
+					data: [2, 10, 3, 7, 9, 6, 1, 4, 5, 3, 7, 5, 4, 5, 6, 7, 8, 6, 8, 9, 10],
+					backgroundColor: [
+						'rgba(169,169,169, 0.2)',
+						'rgba(169,169,169, 0.2)',
+						'rgba(169,169,169, 0.2)',
+						'rgba(169,169,169, 0.2)',
+						'rgba(169,169,169, 0.2)',
+						'rgba(169,169,169, 0.2)'
+					],
+					borderColor: [
+						'rgba(192,192,192, 1)',
+						'rgba(192,192,192, 1)',
+						'rgba(192,192,192, 1)',
+						'rgba(192,192,192, 1)',
+						'rgba(192,192,192, 1)',
+						'rgba(192,192,192, 1)'
+					],
+					borderWidth: 5
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: false
+						}
+					}],
+					xAxes: [{
+						barThickness: 50
+					}]
+				}
+			}
+		});
 	</script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
