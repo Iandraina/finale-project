@@ -5,7 +5,7 @@ import session = require('express-session')
 import alert = require('alert-node')
 import Router = require('router')
 import User = require('../lib/user')
-import { MetricsHandler } from './metrics'
+import Metrics = require('../lib/metrics')
 
 const router = Router()
 const app = express()
@@ -94,11 +94,15 @@ app.post('/signup', (req: any, res: any) => {
     var username = req.body.userName
     var password = req.body.pass
 
+
     var newUser = new User()
     newUser.firstName = firstName
     newUser.lastname = lastname
     newUser.username = username
     newUser.password = password
+
+    var defaulfMetrics = '11577231999'
+    newUser.metrics.push(defaulfMetrics)
 
     newUser.save(function (err, savedUser) {
         if (err) {
@@ -106,6 +110,7 @@ app.post('/signup', (req: any, res: any) => {
             return res.status(500).send();
         }
         else {
+            console.log(newUser._id)
             res.render('myMetrics')
             return res.status(200).send();
         }
@@ -116,13 +121,55 @@ app.post('/signup', (req: any, res: any) => {
 app.get('/myMetrics', (req: any, res: any) => {
     res.render('myMetrics')
 })
-app.get('/metrics.json', (req: any, res: any) => {
-    MetricsHandler.get((err: Error | null, result?: any) => {
+
+//see metrics
+app.get('/seeMetrics', (req: any, res: any) => {
+    res.render('seeMetrics')
+})
+
+//get metrics
+app.get('/addMetrics', (req: any, res: any) => {
+    res.render('addMetrics')
+})
+
+app.post('/addMetrics', (req: any, res: any) => {
+    //just for testing if it works with a precise _id
+    User.findOne({ _id: "5e010b4958a0f43fb822781a" }, function (err, user) {
         if (err) {
-            throw err
+            console.log(err)
+            return res.status(500).send()
         }
-        res.json(result)
+
+        if (!user) {
+            console.log("identifiant non existant")
+            res.render('addMetrics')
+            return res.status(404).send()
+        }
+
+        var dateTime = req.body.date
+        var DTE = new Date(dateTime)
+
+        var metrics = new Metrics()
+        metrics.id_user = "5e010b4958a0f43fb822781a"
+        metrics.timestamp = DTE.getTime()
+        metrics.value = req.body.value
+     
+        metrics.save(function (err, savedUser) {
+            if (err) {
+                console.log(err)
+                return res.status(500).send();
+            }
+            else {
+                res.render('myMetrics')
+                return res.status(200).send();
+            }
+        })
+        // console.log("ito ilay metric : ", metric)
+        res.redirect('/myMetrics')
+
     })
+
+
 })
 
 //logout
@@ -139,4 +186,4 @@ router.get('/logout', function (req, res, next) {
     }
 }),
 
-    module.exports = app;
+module.exports = app;
