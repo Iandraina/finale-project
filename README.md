@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/Reilbat/Final-Web-Project.svg?branch=master)](https://travis-ci.com/Reilbat/Final-Web-Project)
 # finale-project
 
 ## THE PROJECT
