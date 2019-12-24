@@ -1,11 +1,9 @@
-require('custom-env').env(process.env.APP_ENV); //?
-import mongoose from 'mongoose' //mongoose va nous permettre de faire des tests sur mongodb
+import mongoose from 'mongoose' 
 import { UserSchema } from '../src/ModelOfUsers';
 
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../src/index');
-let should = chai.should();
 
 chai.use(chaiHttp);
 
