@@ -4,7 +4,7 @@
   "description": "Web Technologie ING4 Project - CLAVERIE Mathieu, LOBA Alexandre, RAVELOMANANA Iandraina",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha -r ts-node/register tests/*.test.ts --exit",
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha -r ts-node/register test/*.test.ts --exit",
     "start": "./node_modules/.bin/ts-node src/index.ts",
     "build": "./node_modules/.bin/tsc -p tsconfig.json",
     "dev": "./node_modules/.bin/nodemon "
