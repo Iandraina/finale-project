@@ -27,12 +27,32 @@ npm run dev or npm start
 
 ### Test
 
+By using Mocha and Chai, we created some tests.
 To run the test module, you just need to type in your terminal : 
 ```
 npm test 
 ```
 
+## Web site
+
+The server listens on port 3000 of your localhost.
+So, to checkout the App, Go to your [LocalHost (app)](http://localhost:3000/)
+
+### Docker
+
+To run docker
+```
+docker-compose up -d --build
+```
+
+### Difficulties
+
+For DevOps :
+A limitation was the web-project. So we code 2 tests that are not working but we think it should work if we had succeeded to do more on the web-project.
+
 ## COLLABORATOR 
 - CLAVERIE Mathieu
 - LOBA Alexandre
 - RAVELOMANANA Iandraina
+
+SI GR04 - ECE PARIS 2019
