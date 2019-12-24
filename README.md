@@ -21,7 +21,7 @@ npm run build
 To make the projet run you have to type in your terminal : 
 
 ```
-npm start
+npm run dev or npm start
 ```
 
 ### Test
