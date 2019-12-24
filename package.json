@@ -4,7 +4,7 @@
   "description": "Web Technologie ING4 Project - CLAVERIE Mathieu, LOBA Alexandre, RAVELOMANANA Iandraina",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha -r ts-node/register src/**/*.test.ts",
     "start": "./node_modules/.bin/ts-node src/index.ts",
     "build": "./node_modules/.bin/tsc -p tsconfig.json",
     "dev": "./node_modules/.bin/nodemon "
@@ -22,6 +22,7 @@
   "dependencies": {
     "alert-node": "^2.0.3",
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
     "chart.js": "^2.9.3",
     "cookie-parser": "^1.4.4",
     "del": "^5.1.0",
