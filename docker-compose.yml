@@ -2,7 +2,7 @@ version: "3"
 
 services:
     app:
-        container_name: app
+        container_name: app1
         restart: always
         build:
             context: .
@@ -10,7 +10,7 @@ services:
         environment:
             - PORT=3000
         volumes:
-            - "./src:/usr/app/src"
+            - "./src:/usr/src/app"
         ports:
             - "3000:3000"
         links:
@@ -18,14 +18,14 @@ services:
         networks:
             - mongo-compose-network
     mongo:
-        container_name: mongo
+        container_name: mongo1
         image: mongo
         ports:
           - "27017:27017"
         networks:
             - mongo-compose-network
     mongo-express:
-            container_name: mongo-express
+            container_name: mongo-express1
             image: mongo-express
             ports:
               - "8081:8081"
