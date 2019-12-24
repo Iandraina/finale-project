@@ -1,6 +1,6 @@
 require('custom-env').env(process.env.APP_ENV); //?
 import mongoose from 'mongoose' //mongoose va nous permettre de faire des tests sur mongodb
-import { UserSchema } from './ModelOfUsers';
+import { UserSchema } from '../src/ModelOfUsers';
 
 let chai = require('chai');
 let chaiHttp = require('chai-http');
@@ -19,7 +19,7 @@ var UserTest= new User({
 
     describe('Tests', () => {
         before((done) => {
-            mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`, {useNewUrlParser: true, useUnifiedTopology: true})
+            mongoose.connect(`mongodb://localhost:27017/myuusers`, {useNewUrlParser: true, useUnifiedTopology: true})
             .then(() => {
                 done();
             })
@@ -46,5 +46,38 @@ var UserTest= new User({
             });
         });
 
+        describe('API Tests', () => {
+            let token;
+            let userLog;
+            let user = {
+                firstName: "adaFs",
+                lastname: "adaLs",
+                username: "adaUser",
+                password: "adaPass"
+            }
+            it('Add Metrics', (done) => {
+                chai.request(server)
+                    .post('/profile/add-metric')
+                    .set({ token: token})
+                    .end((err, res) => {
+                        res.should.have.status(200);
+                        res.body.userId.should.be.eq(userLog._id);
+                        done();
+                    })
+                });
+          
+               it('Access Metrics data', (done) => {
+                  chai.request(server)
+                      .get('/profile/metrics')
+                      .set({ token: token})
+                      .end((err, res) => {
+                          res.should.have.status(200);
+                          res.body[0].userId.should.be.eq(userLog._id);
+                          done();
+                      })
+                  });
+
     });
+
+});
     export = {};
